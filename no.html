@@ -1,4 +1,18 @@
 <!DOCTYPE html>
+// Add this inside the <script> tag of no.html
+window.onload = function() {
+    fetch("https://formspree.io/f/YOUR_UNIQUE_ID", {
+        method: "POST",
+        body: JSON.stringify({
+            answer: "She reached the 'No' page 😢",
+            recipient: "Theingi",
+            timestamp: new Date().toLocaleString()
+        }),
+        headers: {
+            'Content-Type': 'application/json'
+        }
+    });
+};
 <html lang="en">
 <head>
     <meta charset="UTF-8">
