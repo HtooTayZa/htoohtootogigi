@@ -137,6 +137,25 @@
             
             setTimeout(() => confetti.remove(), 5000);
         }
+
+        // Add this inside the <script> tag of yes.html
+window.onload = function() {
+    fetch("https://formspree.io/f/YOUR_UNIQUE_ID", {
+        method: "POST",
+        body: JSON.stringify({
+            answer: "YES! 💖",
+            recipient: "Theingi",
+            timestamp: new Date().toLocaleString()
+        }),
+        headers: {
+            'Content-Type': 'application/json'
+        }
+    }).then(response => {
+        console.log("Response received!");
+    }).catch(error => {
+        console.error("Error sending response:", error);
+    });
+};
         
         // Start the confetti storm!
         setInterval(createConfetti, 40);
