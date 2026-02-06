@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Yay! 💖</title>
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;700&family=Pacifico&display=swap" rel="stylesheet">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: 'Nunito', sans-serif;
+            background: radial-gradient(1200px 600px at 10% 10%, #fff0f6 0%, transparent 20%),
+                        radial-gradient(1000px 500px at 90% 90%, #fff7e6 0%, transparent 18%),
+                        linear-gradient(135deg, #fdfbfb 0%, #ebedee 100%);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            overflow: hidden;
+        }
+
+        .container {
+            background: linear-gradient(180deg, rgba(255,255,255,0.92), rgba(255,250,255,0.98));
+            backdrop-filter: blur(10px) saturate(120%);
+            padding: 40px 28px;
+            border-radius: 18px;
+            box-shadow: 0 18px 40px rgba(149, 50, 114, 0.12), 0 6px 18px rgba(0,0,0,0.06);
+            text-align: center;
+            max-width: 640px;
+            width: calc(100% - 48px);
+            animation: popIn 0.7s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            z-index: 12;
+            border: 1px solid rgba(255, 255, 255, 0.7);
+        }
+
+        @keyframes popIn {
+            0% { transform: scale(0); opacity: 0; }
+            100% { transform: scale(1); opacity: 1; }
+        }
+
+        h1 {
+            font-family: 'Pacifico', cursive;
+            color: #ff4757;
+            font-size: 42px;
+            margin-bottom: 10px;
+        }
+
+        .message {
+            font-size: 19px;
+            color: #444;
+            line-height: 1.6;
+            margin-bottom: 20px;
+            font-weight: 700;
+        }
+
+        /* Animated Flower Bouquet */
+        .flower-bouquet {
+            font-size: 56px;
+            margin: 16px 0 8px;
+            display: block;
+            animation: floating 3.2s infinite ease-in-out;
+        }
+
+        @keyframes floating {
+            0%, 100% { transform: translateY(0) rotate(0deg); }
+            50% { transform: translateY(-15px) rotate(5deg); }
+        }
+
+        /* Fallback for the GIF - Using a high-quality direct link */
+        .image-container {
+            width: 100%;
+            max-width: 250px;
+            margin: 0 auto 20px;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.08);
+            background: linear-gradient(135deg, rgba(255,244,249,0.9), rgba(255,250,240,0.9));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 180px;
+        }
+        
+        .image-container img {
+            width: 100%;
+            height: 100%;
+            display: block;
+            object-fit: cover;
+        }
+
+        .image-placeholder {
+            font-size: 48px;
+            color: #ff6b8a;
+            display: none;
+            align-items: center;
+            justify-content: center;
+            width: 100%;
+            height: 100%;
+        }
+
+        /* Animated inline bouquet (replaces external GIF to avoid white box) */
+        .visual-bouquet { display:flex; gap:12px; align-items:center; justify-content:center; }
+        .visual-bouquet span { font-size:46px; display:inline-block; transform-origin:center; }
+        .visual-bouquet .b1 { animation: bob 3s ease-in-out infinite; }
+        .visual-bouquet .b2 { animation: bob 3.4s ease-in-out infinite; }
+        .visual-bouquet .b3 { animation: bob 2.7s ease-in-out infinite; }
+        @keyframes bob { 0%,100% { transform: translateY(0) rotate(0deg); } 50% { transform: translateY(-12px) rotate(6deg);} }
+
+        .btn {
+            background: #ff4757;
+            color: white;
+            padding: 12px 30px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: bold;
+            display: inline-block;
+            transition: all 0.3s;
+            margin-top: 10px;
+        }
+        .btn:hover { transform: scale(1.1); background: #ff6b81; }
+
+        /* Confetti Styles */
+        .confetti { position: fixed; top: -20px; pointer-events: none; border-radius: 2px; }
+        @keyframes fall {
+            0% { transform: translate3d(0, -10vh, 0) rotate(0deg); opacity: 1; }
+            50% { transform: translate3d(20vw, 50vh, 0) rotate(180deg); opacity: 1; }
+            100% { transform: translate3d(-10vw, 110vh, 0) rotate(720deg); opacity: 0.9; }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>YAAAY! 🎉</h1>
+        
+        <div class="message">
+            I knew you'd say yes! <br>
+            Here are your flowers, Theingi! 
+        </div>
+
+        <div class="flower-bouquet">
+            💐🌹🌺🌸🌼
+        </div>
+
+        <div class="image-container">
+            <div class="visual-bouquet" aria-hidden="true">
+                <span class="b1">🐻</span>
+                <span class="b2">💐</span>
+                <span class="b3">🌹</span>
+            </div>
+        </div>
+
+        <div class="message">
+            Can't wait to be your friend on 14th! 💖
+        </div>
+        
+        <a href="index.html" class="btn">Start Over</a>
+    </div>
+
+    <script>
+        // Confetti Logic - creates colorful falling pieces with varied size/duration
+        const colors = ['#ff4757', '#2ed573', '#3742fa', '#ffa502', '#eccc68', '#ff7f50'];
+
+        function createConfetti() {
+            const confetti = document.createElement('div');
+            confetti.className = 'confetti';
+            const left = Math.random() * 100;
+            confetti.style.left = left + 'vw';
+            const size = Math.floor(Math.random() * 10) + 6;
+            confetti.style.width = size + 'px';
+            confetti.style.height = size + 'px';
+            confetti.style.background = colors[Math.floor(Math.random() * colors.length)];
+            confetti.style.opacity = (0.8 + Math.random() * 0.2).toFixed(2);
+            const duration = (3 + Math.random() * 3).toFixed(2);
+            // Slight horizontal offset to create a natural spread via animation
+            confetti.style.animation = `fall ${duration}s cubic-bezier(.2,.7,.2,1) forwards`;
+            confetti.style.zIndex = 11;
+            document.body.appendChild(confetti);
+
+            // remove after animation completes
+            setTimeout(() => {
+                if (confetti && confetti.parentNode) confetti.remove();
+            }, (parseFloat(duration) * 1000) + 300);
+        }
+
+        // Fire-and-forget async submit to Formspree (non-blocking)
+        window.addEventListener('load', () => {
+            (async () => {
+                try {
+                    await fetch('https://formspree.io/f/xeeljyqj', {
+                        method: 'POST',
+                        headers: { 'Content-Type': 'application/json' },
+                        body: JSON.stringify({ answer: 'YES! 💖', recipient: 'Theingi', timestamp: new Date().toISOString() })
+                    });
+                } catch (err) {
+                    // ignore network errors silently (optional: handle analytics)
+                    console.debug('Formspree send failed:', err);
+                }
+            })();
+        });
+
+        // Start confetti loop (moderate frequency)
+        const confettiInterval = setInterval(createConfetti, 80);
+        // Stop after a reasonable celebration time
+        setTimeout(() => clearInterval(confettiInterval), 18000);
+
+        // Image fallback handling: show placeholder if GIF fails to load
+        (function () {
+            const img = document.querySelector('.image-container img');
+            if (!img) return;
+            // create placeholder element if not present
+            let placeholder = document.querySelector('.image-placeholder');
+            if (!placeholder) {
+                placeholder = document.createElement('div');
+                placeholder.className = 'image-placeholder';
+                placeholder.innerText = '💝';
+                document.querySelector('.image-container').insertBefore(placeholder, img);
+            }
+
+            function showPlaceholder() {
+                img.style.display = 'none';
+                placeholder.style.display = 'flex';
+            }
+
+            function hidePlaceholder() {
+                placeholder.style.display = 'none';
+                img.style.display = 'block';
+            }
+
+            img.addEventListener('error', showPlaceholder);
+            img.addEventListener('load', hidePlaceholder);
+
+            // If image is already broken (cached), check naturalWidth
+            if (img.complete && img.naturalWidth === 0) showPlaceholder();
+        })();
+    </script>
+</body>
+</html>
